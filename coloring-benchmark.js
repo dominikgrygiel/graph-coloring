@@ -5,7 +5,9 @@ for(var i = 1; i <= 100; i++) {
   var graph = new UndirectedGraph(i);
   graph.makeRandomWithSaturation();
 
-  var lf = graph.lfColorize(), sl = graph.slColorize(), slf = graph.slfColorize();
-  console.log(i + ": " + lf + " " + sl + " " + slf);
+  var brute = graph.bruteColorize(), lf = graph.lfColorize(), sl = graph.slColorize(), slf = graph.slfColorize();
+  if((brute > lf) || (brute > sl) || (brute > slf)) {
+    console.log(i + ": " + brute + " " + lf + " " + sl + " " + slf);
+  }
 }
 

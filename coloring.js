@@ -11,16 +11,15 @@ process.stdin.on('data', function (chunk) {
   graph = new UndirectedGraph(n);
 
   for(var i = 1; i < lines.length; i++) {
-    if(lines[i] !== ''  && !isNaN(parseInt(lines[i].split(' ')[0]))) {
-      graph.addEdge(parseInt(lines[i].split(' ')[0]), parseInt(lines[i].split(' ')[1]));
+    if(lines[i] !== '' && !isNaN(parseInt(lines[i].split(' ')[0], 10))) {
+      graph.addEdge(parseInt(lines[i].split(' ')[0], 10) - 1, parseInt(lines[i].split(' ')[1], 10) - 1);
     }
   }
 
- /* process.stdout.write("Algorytm LF: " + graph.lfColorize() + "\n");*/
- // process.stdout.write("Algorytm SL: " + graph.slColorize() + "\n");
- // process.stdout.write("Algorytm SLF: " + graph.slfColorize() + "\n");
- 
   process.stdout.write("Algorytm BruteForce: " + graph.bruteColorize() + "\n");
+  process.stdout.write("Algorytm LF: " + graph.lfColorize() + "\n");
+  process.stdout.write("Algorytm SL: " + graph.slColorize() + "\n");
+  process.stdout.write("Algorytm SLF: " + graph.slfColorize() + "\n");
 
 });
 
