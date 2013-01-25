@@ -3,6 +3,13 @@ graph-coloring
 
 University project on graph coloring
 
+Dependencies
+------------
+
+```bash
+npm install microtime
+```
+
 Testing sample data
 -------------------
 

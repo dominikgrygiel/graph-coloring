@@ -1,15 +1,23 @@
-var _ = require("./lib/underscore-min.js"),
+var _ = require("./lib/underscore-min.js"), microtime = require('microtime'),
     UndirectedGraph = require("./lib/undirected_graph.js").UndirectedGraph;
 
-for(var i = 1; i <= 100; i++) {
-  var graph = new UndirectedGraph(i);
-  graph.makeRandomWithSaturation();
+process.stdout.write("V;brute;;LF;;SL;;SLF;;\n");
 
-  var brute = graph.bruteColorize(), lf = graph.lfColorize(), sl = graph.slColorize(), slf = graph.slfColorize();
-  //if((brute > lf) || (brute > sl) || (brute > slf)) {
-    console.log(i + ": " + brute + " " + lf + " " + sl + " " + slf);
-  //} else {
-    //console.log(i + ": ");
-  //}
+for(var i = 1; i <= 100; i++) {
+  var graph = new UndirectedGraph(i), start;
+  graph.makeRandomWithSaturation(80);
+
+  process.stdout.write(i + ";");
+  start = microtime.now();
+  process.stdout.write(graph.bruteColorize() + ";" + (microtime.now() - start) / 1000 + ";");
+
+  start = microtime.now();
+  process.stdout.write(graph.lfColorize() + ";" + (microtime.now() - start) / 10000 + ";");
+
+  start = microtime.now();
+  process.stdout.write(graph.slColorize() + ";" + (microtime.now() - start) / 10000 + ";");
+
+  start = microtime.now();
+  process.stdout.write(graph.slfColorize() + ";" + (microtime.now() - start) / 10000 + "\n");
 }
 
