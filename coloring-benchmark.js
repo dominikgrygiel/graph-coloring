@@ -1,7 +1,7 @@
 var _ = require("./lib/underscore-min.js"), microtime = require('microtime'),
     UndirectedGraph = require("./lib/undirected_graph.js").UndirectedGraph;
 
-process.stdout.write("V;brute;;RS;;LF;;SL;;SLF;;MW;;\n");
+process.stdout.write("V;brute;;RS;;LF;;SL;;SLF;;MW;;BF;;\n");
 
 for(var i = 1; i <= 100; i++) {
   var graph = new UndirectedGraph(i), start;
@@ -24,6 +24,9 @@ for(var i = 1; i <= 100; i++) {
   process.stdout.write(graph.slfColorize() + ";" + (microtime.now() - start) / 10000000 + ";");
 
   start = microtime.now();
-  process.stdout.write(graph.modifiedWigdersonColorize() + ";" + (microtime.now() - start) / 10000000 + "\n");
+  process.stdout.write(graph.modifiedWigdersonColorize() + ";" + (microtime.now() - start) / 10000000 + ";");
+
+  start = microtime.now();
+  process.stdout.write(graph.biggestFirst() + ";" + (microtime.now() - start) / 10000000 + "\n");
 }
 
