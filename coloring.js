@@ -21,6 +21,7 @@ process.stdin.on('data', function (chunk) {
   process.stdout.write("Algorytm SL: " + graph.slColorize() + "\n");
   process.stdout.write("Algorytm SLF: " + graph.slfColorize() + "\n");
   process.stdout.write("Algorytm zmodyfikowany Wigderson: " + graph.modifiedWigdersonColorize() + "\n");
+  process.stdout.write("Algorytm BF: " + graph.biggestFirst() + "\n");
 
 });
 
